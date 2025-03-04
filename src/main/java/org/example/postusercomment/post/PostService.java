@@ -1,5 +1,6 @@
 package org.example.postusercomment.post;
 
+import org.example.postusercomment.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,9 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public void createPost(Post post) {
         postRepository.save(post);
@@ -31,7 +35,5 @@ public class PostService {
         postRepository.delete(id);
     }
 
-    public List<Post> getPostsByUser(Long userId) {
-        return postRepository.findAllByUserId(userId);
-    }
+    public List<Post> getPostsByUser(Long userId) { return postRepository.findAllByUserId(userId); }
 }
