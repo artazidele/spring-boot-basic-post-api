@@ -42,9 +42,9 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @GetMapping("/users/{userId}")
-    public List<Post> getPostsByUserId(@RequestParam Long userId) {
-        return postService.getPostsByUser(userId);
+    @GetMapping("/users/{user_id}")
+    public List<Post> getPostsByUserId(@RequestParam Long user_id) {
+        return postService.getPostsByUser(user_id);
     }
 
     @DeleteMapping("/{id}")

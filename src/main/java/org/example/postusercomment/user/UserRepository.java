@@ -29,6 +29,12 @@ public class UserRepository {
         return jdbcTemplate.queryForObject(sql, userRowMapper, id);
     }
 
+    public boolean checkIfExistsById(Long id) {
+        String sql = "SELECT count(*) FROM users WHERE id = ?";
+        int count = jdbcTemplate.queryForObject(sql, new Object[] { id }, Integer.class);
+        return count > 0;
+    }
+
     public List<User> findAll() {
         String sql = "SELECT * FROM users";
         return jdbcTemplate.query(sql, userRowMapper);
